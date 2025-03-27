@@ -1,0 +1,164 @@
+/* GENERAL*************************************************************************** */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "open sans", sans-serif;
+}
+
+:root {
+    --vert: #ccd5ae;
+    --vert_clair: #e9edc9;
+    --beige_clair: #fefae0;
+    --beige: #faedcd;
+    --brun: #d4a373;
+    --brun_fonce: #4b3d32;
+    --beige_clair_low_opacity: rgba(254, 250, 224, 0.6);
+    --vert_fonce_low-opacity: rgba(40, 54, 24, 0.6)
+
+}
+
+body {
+    background-color: var(--beige_clair);
+}
+
+header {
+    background-color: var(--vert);
+    display: flex;
+    padding: 10px;
+}
+
+.logo {
+    width: 50px;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 100px;
+}
+
+.navigateur {
+    width: 100%;
+}
+
+.navigateur a {
+    gap: 80px;
+    text-decoration: none;
+    color: black;
+    padding: 15px 30px 15px 30px;
+    border-radius: 5px;
+}
+
+.navigateur a:hover {
+    background-color: var(--beige_clair_low_opacity);
+}
+
+/* INDEX************************************************************************* */
+
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: var(--brun_fonce);
+}
+
+form {
+    width: 400px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background: var(--vert_clair);
+    border-radius: 10px;
+}
+
+form p {
+    padding: 10px;
+}
+
+label {
+    display: block;
+    padding-bottom: 10px;;
+}
+
+form input {
+    padding: 5px;
+    width: 80%;
+    border: none;
+    border-radius: 5px;
+}
+
+.button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+input[type="submit"] {
+    width: 50%;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--vert);
+    padding: 15px;
+    margin-top: 10px;
+}
+
+input[type="submit"]:hover {
+    background-color: var(--vert_fonce_low-opacity);
+}
+
+footer {
+    background-color: var(--vert);
+    height: 80px; 
+    width: 100%; 
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+/* RECAP************************************************************************* */
+
+table {
+    width: 400px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background: var(--vert_clair);
+    border-radius: 10px;
+    overflow-y: auto; 
+    border-spacing: 0; 
+}
+
+table thead th {
+    padding-bottom: 15px;
+}
+
+table td {
+    padding: 10px;
+    border-collapse: collapse;
+    border-top: 1px solid var(--brun_fonce);
+}
+
+.tgeneral {
+    padding-top: 15px;
+    padding-bottom: 0;
+}
+
+thead {
+    position: sticky;
+    top: 0;
+    background-color: var(--vert_clair);
+    z-index: 1000;
+}
+
+.table-container {
+    width: 80%;
+    max-height: 300px; 
+    margin: 0 auto;
+    overflow-y: auto; 
+}
+
