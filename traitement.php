@@ -18,7 +18,7 @@
 
             $_SESSION["products"][] = $product;
         }
-    }
+    } 
 
     header("Location:index.php");
     exit;

@@ -18,7 +18,7 @@ session_start();
             <a href="index.php">Formulaire de commande</a>
             <a href="recap.php">Tableaux de commandes</a>
         </nav>
-    </header>
+    </header> 
     <main>
         <?php 
             if(!isset($_SESSION["products"]) || empty($_SESSION["products"])){
