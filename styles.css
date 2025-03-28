@@ -15,7 +15,6 @@
     --brun_fonce: #4b3d32;
     --beige_clair_low_opacity: rgba(254, 250, 224, 0.6);
     --vert_fonce_low-opacity: rgba(40, 54, 24, 0.6)
-
 }
 
 body {
@@ -60,14 +59,24 @@ nav {
 h1 {
     text-align: center;
     margin-bottom: 30px;
+    margin-top: 30px;
     color: var(--brun_fonce);
+    font-weight: 500;
+    padding: 20px 40px 20px 40px;
+    background-color: var(--vert);
+    width: 500px;
+    position: absolute;
+    left: 50%;
+    top: 19%;
+    transform: translate(-50%, -50%);
+    border-radius: 10px;
 }
 
 form {
     width: 400px;
     position: absolute;
     left: 50%;
-    top: 50%;
+    top: 52%;
     transform: translate(-50%, -50%);
     padding: 20px;
     background: var(--vert_clair);
@@ -118,6 +127,22 @@ footer {
     left: 0;
 }
 
+.total_article {
+    width: 400px;
+    position: absolute;
+    left: 50%;
+    top: 80%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background: var(--vert);
+    border-radius: 10px;
+}
+
+.total_article p {
+    text-align: center;
+}
+
+
 /* RECAP************************************************************************* */
 
 table {
@@ -131,33 +156,65 @@ table {
     border-radius: 10px;
     overflow-y: auto; 
     border-spacing: 0; 
+    text-align: center;
 }
 
 table thead th {
-    padding-bottom: 15px;
+    padding: 15px;
 }
 
 table td {
     padding: 10px;
     border-collapse: collapse;
     border-top: 1px solid var(--brun_fonce);
+    text-align: center;
+    
 }
 
 .tgeneral {
-    padding-top: 15px;
-    padding-bottom: 0;
+    padding: 15px;
+    text-align: start;
 }
 
-thead {
-    position: sticky;
-    top: 0;
-    background-color: var(--vert_clair);
-    z-index: 1000;
-}
 
 .table-container {
-    width: 80%;
+    width: 50%;
     max-height: 300px; 
-    margin: 0 auto;
     overflow-y: auto; 
+}
+
+.tproduit td {
+    padding: 0;
+    text-align: left;
+}
+
+table a {
+    text-decoration: none;
+    color: black;
+    font-weight: 550;
+}
+table a:hover {
+    opacity: 0.6;
+}
+
+.modifier_qtt a {
+    font-weight: 500;
+}
+
+.delete_message {
+    position: absolute;
+    top: 45%;
+    left: 40%;
+    font-size: 3em;
+    background-color:var(--vert);
+    border: 3px dashed var(--brun_fonce);
+    padding: 10px;
+}
+
+.no_product {
+    color: var(--brun_fonce);
+    font-size: 2em;
+    position: absolute;
+    top: 45%;
+    left: 40%;
 }

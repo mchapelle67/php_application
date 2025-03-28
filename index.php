@@ -18,9 +18,10 @@
             <a href="recap.php">Tableaux de commandes</a>
         </nav>
     </header>
-   <main>
+
+   <main> <h1> Formulaire de commande </h1>
         <form action="traitement.php" method="post">
-            <h1> Formulaire de commande </h1>
+           
                 <p>
                     <label> Nom du produit:</label>
                         <input type="text" name="name" placeholder="Ex: Banane">
@@ -36,9 +37,26 @@
                 <p class="button">
                         <input type="submit" name="submit" value="Ajouter le produit">
                 </p>
-        </form>
+    </form>
+    <div class="total_article">
+    <?php
+            session_start(); 
+                if (isset($_SESSION['totalProduct'])) {
+                    echo "<p>Il y a ".$_SESSION['totalProduct']." articles en cours de commande.</p>";
+            } else {
+                echo "<p>Aucune donnée disponible.</p>";
+            }
+        
+            if (isset($_SESSION['message'])) {
+                echo "<p class='success-message'>" . $_SESSION['message'] . "</p>";
+                unset($_SESSION['message']);  // Supprimer le message après l'affichage
+            }
+
+    ?>
+    </div>
     </main>
     <footer>
     </footer>
 </body>
 </html>
+
