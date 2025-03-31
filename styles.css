@@ -202,13 +202,10 @@ table a:hover {
 }
 
 .delete_message {
-    position: absolute;
-    top: 45%;
-    left: 40%;
-    font-size: 3em;
     background-color:var(--vert);
-    border: 3px dashed var(--brun_fonce);
+    border: 3px solid var(--brun_fonce);
     padding: 10px;
+    font-size: 2em;
 }
 
 .no_product {

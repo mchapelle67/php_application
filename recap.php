@@ -23,12 +23,11 @@
     <?php
 
 session_start();
-
             if(!isset($_SESSION["products"]) || empty($_SESSION["products"])){
             echo "<span class='no_product'>Aucun produit en session...</span>";
             } else {
                 echo "<table class='table-container'>",
-                        "<h1>PANIER</h1>",
+                        // "<h1>PANIER</h1>",
                         "<thead>",
                             "<tr>",
                                 "<th>#</th>",
@@ -44,13 +43,13 @@ session_start();
                 $totalProduct = 0;
                 foreach($_SESSION["products"] as $index =>$product){
                     echo "<tr>",
-                            "<td>".$index."</td>",
-                            "<td>".$product["name"]."</td>",
-                            "<td>".number_format($product["price"], 2, ",", "&nbsp")."&nbsp;€</td>",
-                            "<td class='modifier_qtt'><a href='recap.php?action=down_qtt&id=".$index."'> - </a>".$product["qtt"]."<a href='recap.php?action=up_qtt&id=".$index."'> + </a></td>",
-                            "<td>".number_format($product["total"], 2, ",", "&nbsp")."&nbsp;€</td>",
-                            "<td><a href='recap.php?action=delete&id=".$index."'>Supprimer</a></td>">
-                        "</tr>";
+                                "<td>".$index."</td>",
+                                "<td>".$product["name"]."</td>",
+                                "<td>".number_format($product["price"], 2, ",", "&nbsp")."&nbsp;€</td>",
+                                "<td class='modifier_qtt'><a href='traitement.php?action=down_qtt&id=".$index."'> - </a>".$product["qtt"]."<a href='traitement.php?action=up_qtt&id=".$index."'> + </a></td>",
+                                "<td>".number_format($product["total"], 2, ",", "&nbsp")."&nbsp;€</td>",
+                                "<td><a href='traitement.php?action=delete&id=".$index."'>Supprimer</a></td>",
+                                "</tr>";  
                     $totalGeneral += $product["total"];
                     $totalProduct += $product["qtt"];
                 }
@@ -58,18 +57,26 @@ session_start();
                             "<td class='tgeneral' colspan=3><strong>Total général: </td>",
                             "<td><strong>".$totalProduct."</td>",
                             "<td><strong>".number_format($totalGeneral, 2, ",", "&nbsp")."&nbsp;€</td>",
-                            "<td class='delete_all'><a href='recap.php?action=clear_all'>Tout supprimer</a></td>",
+                            "<td class='delete_all'><a href='traitement.php?action=clear_all'>Tout supprimer</a></td>",
                             "</tr>",    
                     "</tbody>",
                     "</table>";
                 
-            $_SESSION['totalProduct'] = $totalProduct;
-                }
-                if (isset($_SESSION['delete_message'])) {
-                    echo "<p class='delete_message'>" . $_SESSION['delete_message'] . "</p>";
-                    unset($_SESSION['delete_message']);  // Supprimer le message après l'affichage
-                }    
+                $_SESSION['totalProduct'] = $totalProduct;
+            
+            }
+
+    // MESSAGES 
+            if (isset($_SESSION['delete_message'])) {
+                echo "<p>".$_SESSION['delete_message']."</p>";
+                unset($_SESSION['delete_message']);  // Supprimer le message après l'affichage
+            }    
         
+            if (isset($_SESSION['message_down_qtt'])) {
+                echo "<p>".$_SESSION['message_down_qtt']."</p>";
+                unset($_SESSION['message_down_qtt']);
+            }
+
     ?>
     </main>
     <footer>

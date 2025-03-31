@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,7 +24,7 @@
     </header>
 
    <main> <h1> Formulaire de commande </h1>
-        <form action="traitement.php" method="post">
+        <form action="traitement.php?action=add" method="post">
            
                 <p>
                     <label> Nom du produit:</label>
@@ -28,7 +32,7 @@
                 </p>
                 <p>
                     <label>Prix du produit:</label>
-                        <input type="number" name="price" step="0.1" placeholder="€">
+                        <input type="number" name="price" step="0.1" value="0.1">
                 </p>
                 <p>
                     <label>Quantité désirée:</label> 
@@ -38,25 +42,23 @@
                         <input type="submit" name="submit" value="Ajouter le produit">
                 </p>
     </form>
-    <div class="total_article">
-    <?php
-            session_start(); 
-                if (isset($_SESSION['totalProduct'])) {
-                    echo "<p>Il y a ".$_SESSION['totalProduct']." articles en cours de commande.</p>";
-            } else {
-                echo "<p>Aucune donnée disponible.</p>";
-            }
-        
-            if (isset($_SESSION['message'])) {
-                echo "<p class='success-message'>" . $_SESSION['message'] . "</p>";
-                unset($_SESSION['message']);  // Supprimer le message après l'affichage
-            }
 
+
+    <div class="total_article">
+    <?php 
+    if (isset($_SESSION['message'])){?>
+        <p><?= $_SESSION['message'] ?></p>
+    <?php
+    unset($_SESSION['message']); 
+    } 
+
+    echo "<p>Vous avez ".$_SESSION['totalProduct']." articles en cours de commande.</p>";
     ?>
     </div>
+
+    
     </main>
     <footer>
     </footer>
 </body>
 </html>
-

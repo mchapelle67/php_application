@@ -1,75 +1,80 @@
 <?php
     session_start();
-
-    if(isset($_POST['submit'])){
-        switch($_POST['submit']){
-
-        case 'add': 
-        $name = filter_input(INPUT_POST, "name", FILTER_SANITIZE_SPECIAL_CHARS);
-        $price = filter_input(INPUT_POST, "price", FILTER_VALIDATE_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
-        $qtt = filter_input(INPUT_POST, "qtt", FILTER_VALIDATE_INT);
-
-        if ($name && $price && $qtt){
-            
-            $product = [
-                "name" => $name,
-                "price" => $price,
-                "qtt" => $qtt,
-                "total" =>$price*$qtt
-            ];
-
-            $_SESSION["products"][] = $product;
-            $_SESSION['message'] = "Votre commande a bien été prise en compte.";
-        
-    } break; 
-
-        case 'delete': 
-// Vérifier si l'ID du produit à supprimer est spécifié dans l'URL
-            if (isset($_POST['id'])) {
-                $idToDelete = $_POST['id'];
-// Supprimer le produit de la session
-            unset($_SESSION['products'][$idToDelete]);
-                $_SESSION['delete_message'] = "Article supprimé.";
-// Rediriger vers recap.php après la suppression
-            header('Location: recap.php');
-                exit();
-        } break;
     
-        case 'clear_all':
-// Supprimer tous les produits de la session
-            unset($_SESSION['products']);
-                $_SESSION['totalProduct'] = 0;  // Réinitialiser aussi le total
-                header("Location: recap.php");
-                exit(); 
+    
+    if(isset($_GET['action'])){
+        switch($_GET['action']){
+            
+            case 'add': 
+                $name = filter_input(INPUT_POST, "name", FILTER_SANITIZE_SPECIAL_CHARS);
+                $price = filter_input(INPUT_POST, "price", FILTER_VALIDATE_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
+                $qtt = filter_input(INPUT_POST, "qtt", FILTER_VALIDATE_INT);
+                if ($name && $price && $qtt){
+                            $product = [
+                                "name" => $name,
+                                 "price" => $price,
+                                "qtt" => $qtt,
+                                "total" =>$price*$qtt
+                    ];
+                    
+                    $_SESSION["products"][] = $product;
+                    $_SESSION['message'] = "Article en commande.";
+                } else {
+                      $_SESSION['message'] = "Erreur de saisis.";
+                } 
 
-        case 'up_qtt': 
-            if (isset($_POST['id'])) {
-                $idToAdd = $_POST['id'];
-                if (isset($_SESSION['products'][$idToAdd])) {
+            header("Location:index.php");
+            exit;
+                
+            case 'delete':
+            // Vérifier si l'ID du produit à supprimer est spécifié dans l'URL
+                if (isset($_GET['id']) && is_numeric($_GET['id'])) {
+                $indexToDelete = $_GET['id'];
+
+                    // Supprimer le produit de la session
+                    if (isset($_SESSION['products'][$indexToDelete])) {
+                    unset($_SESSION['products'][$indexToDelete]);
+                    $_SESSION['delete_message'] = "Article supprimé.";
+                        } else {
+                            $_SESSION['delete_message'] = "Produit introuvable.";
+                    }
+                } break;
+
+        
+                
+            case 'clear_all':
+            // Supprimer tous les produits de la session
+            unset($_SESSION['products']);
+            $_SESSION['totalProduct'] = 0;  // Réinitialiser aussi le total
+            break;
+        
+                    
+            case 'up_qtt': 
+                if (isset($_GET['id']) && is_numeric($_GET['id'])) {
+                $idToAdd = $_GET['id'];
+                    if (isset($_SESSION['products'][$idToAdd])) {
                     $_SESSION['products'][$idToAdd]['qtt']++;  // Incrémenter la quantité
                     $_SESSION['products'][$idToAdd]['total'] = $_SESSION['products'][$idToAdd]['qtt'] * $_SESSION['products'][$idToAdd]['price'];  // Mettre à jour le total
-                    header("Location: recap.php");
-                    exit();
-            }
-        } break;
-        
-        
-        case 'down_qtt': 
-            if (isset($_POST['id'])) {
-                $idToAdd = $_POST['id'];
-                if (isset($_SESSION['products'][$idToAdd])) {
-                    $_SESSION['products'][$idToAdd]['qtt']--;  
-                    $_SESSION['products'][$idToAdd]['total'] = $_SESSION['products'][$idToAdd]['qtt'] * $_SESSION['products'][$idToAdd]['price'];  // Mettre à jour le total
-                        header("Location: recap.php");
-                        exit();
-                }
-            } break;
-            
+                    }
+                } break;
+                        
+                        
+            case 'down_qtt': 
+                if (isset($_GET['id']) && is_numeric($_GET['id'])) {
+                $idToAdd = $_GET['id'];
+                    if (isset($_SESSION['products'][$idToAdd])) {
+                        if ($_SESSION['products'][$idToAdd]['qtt'] > 0) {
+                            $_SESSION['products'][$idToAdd]['qtt']--;  
+                            $_SESSION['products'][$idToAdd]['total'] = $_SESSION['products'][$idToAdd]['qtt'] * $_SESSION['products'][$idToAdd]['price'];  // Mettre à jour le total
+                        }     
+                    }
+                } break;  
         }
-    }        
+    }
 
-header("Location:index.php");
-exit;  
+header("Location:recap.php");
+exit;
+
 ?>
 
 
