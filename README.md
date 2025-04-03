@@ -7,25 +7,32 @@ Fonctionnalités
 
 Formulaire de commande :
 
--Saisie des informations nécessaires pour passer commande (articles, prix, quantité, boutons d'envois).
+-Saisie des informations nécessaires pour passer commande (articles, prix, quantité, boutons d'envois).7
+
 -Mise en place d'une validation des données saisies avec affichage de messages d'erreur si nécessaire.
 
 Traitement des données :
 
 -Récupération et traitement des informations soumises.
+
 -Envoi des données vers un fichier de récapitulatif.
 
 Récapitulatif des commandes :
 
 -Affichage d'un tableau listant les articles commandés et les informations associées.
+
 -Affichage dynamique du nombre total d'articles en commande.
 
 Gestion des commandes :
 
 -Ajouter : Possibilité d'ajouter de nouveaux articles.
+
 -Modifier : Modifier la quantité d'un article.
+
 -Supprimer individuellement : Retirer un article spécifique de la commande.
+
 -Supprimer tout : Réinitialiser l'ensemble de la commande.
+
 -Messages de succès pour confirmer les actions réalisées et messages d'erreur en cas de problème.
 
 Mise en place CSS :
@@ -35,6 +42,7 @@ Mise en place CSS :
 Structure du Projet
 
 -index.php : Page principale contenant le formulaire de commande.
+
 -traitement.php : Script de traitement des données envoyées par le formulaire.
 -recap.php : Fichier de récapitulatif affichant un tableau des commandes.
 -styles.css : Feuille de style pour la mise en page et le design de l'application.
