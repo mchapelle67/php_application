@@ -3,7 +3,9 @@ Ce dépôt contient ma première application PHP réalisée dans le cadre de ma 
 L'application permet de passer une commande via un formulaire, de traiter et stocker les données saisies, puis d'afficher un récapitulatif sous forme de tableau. 
 Elle intègre également des fonctionnalités pour ajouter, enlever un article, tout supprimer ou supprimer individuellement un article, ainsi que des messages d'erreur et de réussite et l'affichage du nombre d'articles commandés.
 
+
 Fonctionnalités
+
 
 Formulaire de commande :
 
@@ -11,17 +13,20 @@ Formulaire de commande :
 
 -Mise en place d'une validation des données saisies avec affichage de messages d'erreur si nécessaire.
 
+
 Traitement des données :
 
 -Récupération et traitement des informations soumises.
 
 -Envoi des données vers un fichier de récapitulatif.
 
+
 Récapitulatif des commandes :
 
 -Affichage d'un tableau listant les articles commandés et les informations associées.
 
 -Affichage dynamique du nombre total d'articles en commande.
+
 
 Gestion des commandes :
 
@@ -35,9 +40,11 @@ Gestion des commandes :
 
 -Messages de succès pour confirmer les actions réalisées et messages d'erreur en cas de problème.
 
+
 Mise en place CSS :
 
 -Utilisation de CSS pour styliser le formulaire et le tableau récapitulatif afin d'améliorer l'ergonomie et l'esthétique de l'application.
+
 
 Structure du Projet
 
