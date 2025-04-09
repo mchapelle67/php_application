@@ -1,4 +1,5 @@
 Première Appli PHP – Formulaire de Commande
+
 Ce dépôt contient ma première application PHP réalisée dans le cadre de ma formation.
 L'application permet de passer une commande via un formulaire, de traiter et stocker les données saisies, puis d'afficher un récapitulatif sous forme de tableau. 
 Elle intègre également des fonctionnalités pour ajouter, enlever un article, tout supprimer ou supprimer individuellement un article, ainsi que des messages d'erreur et de réussite et l'affichage du nombre d'articles commandés.
